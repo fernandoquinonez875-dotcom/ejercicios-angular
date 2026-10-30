@@ -91,6 +91,14 @@ export class LibroComponent {
     this.anio = this.libros[indice].anio;
   }
 
+  eliminar(indice: number) {
+    if (confirm('¿Eliminar este registro?')) {
+      this.libros.splice(indice, 1);
+      this.guardarEnLocalStorage();
+      this.limpiar();
+    }
+  }
+
   limpiar() {
     this.codigo = '';
     this.titulo = '';
