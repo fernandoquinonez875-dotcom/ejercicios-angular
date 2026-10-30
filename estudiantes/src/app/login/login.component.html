@@ -1,0 +1,13 @@
+<main>
+  <h1>Iniciar sesión</h1>
+  <p>Registro de estudiantes</p>
+  <form (ngSubmit)="iniciarSesion()">
+    <label for="usuario">Usuario</label>
+    <input id="usuario" name="usuario" autocomplete="username"
+      [(ngModel)]="usuario" required>
+    <label for="clave">Contraseña</label>
+    <input id="clave" name="clave" type="password" autocomplete="current-password"
+      [(ngModel)]="clave" required>
+    <button type="submit">Ingresar</button>
+  </form>
+</main>
