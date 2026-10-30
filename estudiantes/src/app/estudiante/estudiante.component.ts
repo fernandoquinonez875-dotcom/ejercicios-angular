@@ -86,6 +86,14 @@ export class EstudianteComponent {
     this.fechaIngreso = this.estudiantes[indice].fechaIngreso;
   }
 
+  eliminar(indice: number) {
+    if (confirm('¿Eliminar este registro?')) {
+      this.estudiantes.splice(indice, 1);
+      this.guardarEnLocalStorage();
+      this.limpiar();
+    }
+  }
+
   limpiar() {
     this.cuenta = '';
     this.nombre = '';
