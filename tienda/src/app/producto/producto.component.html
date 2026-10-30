@@ -2,6 +2,24 @@
   <h1>Inventario de una tienda</h1>
   <button type="button" (click)="cerrarSesion()">Cerrar sesión</button>
 
+  <h2>Registrar producto</h2>
+  <form (ngSubmit)="guardar()">
+    <label for="codigo">Código</label>
+    <input id="codigo" name="codigo" type="text"
+      [(ngModel)]="codigo" required>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" type="text"
+      [(ngModel)]="nombre" required>
+    <label for="precio">Precio en lempiras (L)</label>
+    <input id="precio" name="precio" type="number"
+      [(ngModel)]="precio" min="0" step="any" required>
+    <label for="existencias">Existencias</label>
+    <input id="existencias" name="existencias" type="number"
+      [(ngModel)]="existencias" min="0" step="1" required>
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="limpiar()">Cancelar</button>
+  </form>
+
   <h2>Productos registrados</h2>
   <p>Total: {{ productos.length }}</p>
   @if (productos.length === 0) {

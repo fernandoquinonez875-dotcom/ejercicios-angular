@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 interface Producto {
@@ -11,12 +12,17 @@ interface Producto {
 
 @Component({
   selector: 'app-producto',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './producto.component.html',
   styleUrl: './producto.component.css'
 })
 export class ProductoComponent {
   productos: Producto[] = [];
+
+  codigo = '';
+  nombre = '';
+  precio: number | null = null;
+  existencias: number | null = null;
 
   constructor(private router: Router) {
     if (localStorage.getItem('sesionTienda') !== 'si') {
@@ -33,5 +39,55 @@ export class ProductoComponent {
   cerrarSesion() {
     localStorage.removeItem('sesionTienda');
     this.router.navigate(['/login']);
+  }
+
+  guardar() {
+    if (this.codigo.trim() === '' ||
+        this.nombre.trim() === '' ||
+        this.precio === null ||
+        this.existencias === null) {
+      alert('Complete todos los campos');
+      return;
+    }
+
+    if (!Number.isFinite(this.precio) || this.precio <= 0) {
+      alert('El precio debe ser mayor que cero');
+      return;
+    }
+
+    if (!Number.isInteger(this.existencias) || this.existencias < 0) {
+      alert('Existencias debe ser un entero mayor o igual que 0');
+      return;
+    }
+
+    let nuevoId = 1;
+    for (const producto of this.productos) {
+      if (producto.id >= nuevoId) {
+        nuevoId = producto.id + 1;
+      }
+    }
+
+    const nuevoRegistro: Producto = {
+      id: nuevoId,
+      codigo: this.codigo.trim(),
+      nombre: this.nombre.trim(),
+      precio: this.precio,
+      existencias: this.existencias
+    };
+    this.productos.push(nuevoRegistro);
+
+    this.guardarEnLocalStorage();
+    this.limpiar();
+  }
+
+  limpiar() {
+    this.codigo = '';
+    this.nombre = '';
+    this.precio = null;
+    this.existencias = null;
+  }
+
+  guardarEnLocalStorage() {
+    localStorage.setItem('productosTienda', JSON.stringify(this.productos));
   }
 }
