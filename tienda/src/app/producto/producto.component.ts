@@ -1,0 +1,23 @@
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-producto',
+  imports: [],
+  templateUrl: './producto.component.html',
+  styleUrl: './producto.component.css'
+})
+export class ProductoComponent {
+
+  constructor(private router: Router) {
+    if (localStorage.getItem('sesionTienda') !== 'si') {
+      this.router.navigate(['/login']);
+      return;
+    }
+  }
+
+  cerrarSesion() {
+    localStorage.removeItem('sesionTienda');
+    this.router.navigate(['/login']);
+  }
+}
