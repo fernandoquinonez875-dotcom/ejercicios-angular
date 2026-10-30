@@ -1,6 +1,6 @@
 # Biblioteca
 
-Ejercicio CRUD + login de la guía de Angular. Etapa actual: Login.
+Ejercicio CRUD + login de la guía de Angular. Etapa actual: Mostrar registros.
 
 ## Ejecutar
 
@@ -23,13 +23,13 @@ Es una simulación educativa en el navegador. Utilice datos ficticios.
 
 App únicamente contiene RouterOutlet. LoginComponent valida el acceso.
 LibroComponent revisa la marca `sesionBiblioteca` al entrar.
-El listado se agrega en la siguiente etapa.
+El arreglo se recupera de `librosBiblioteca` usando JSON.parse.
 
 Cerrar sesión elimina únicamente `sesionBiblioteca`; conserva los registros y las claves de otras aplicaciones.
 
 ## Preparar dos registros en la fase de listado
 
-Este bloque se ejecutará en la fase Mostrar registros, antes de construir el formulario de creación:
+Después de iniciar sesión, ejecute en la consola del navegador:
 
 ```javascript
 if (localStorage.getItem('librosBiblioteca') === null) {
@@ -66,14 +66,14 @@ Proyecto generado con `ng new biblioteca --routing --ssr=false --style=css --ski
 Desde la raíz del repositorio común, use los mensajes exactos en este orden:
 
 1. Login biblioteca (implementado)
-2. Mostrar registros biblioteca
+2. Mostrar registros biblioteca (implementado)
 3. Crear registros biblioteca
 4. Actualizar registros biblioteca
 5. Eliminar registros biblioteca
 
 ```powershell
 git add biblioteca/
-git commit -m "Login biblioteca"
+git commit -m "Mostrar registros biblioteca"
 git push
 ```
 

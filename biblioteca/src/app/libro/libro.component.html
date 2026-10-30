@@ -2,5 +2,34 @@
   <h1>Biblioteca</h1>
   <button type="button" (click)="cerrarSesion()">Cerrar sesión</button>
 
-  <p>Sesión iniciada correctamente.</p>
+  <h2>Libros registrados</h2>
+  <p>Total: {{ libros.length }}</p>
+  @if (libros.length === 0) {
+    <p>No hay libros registrados.</p>
+  } @else {
+    <div class="tabla">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Código</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Año</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (libro of libros; track libro.id; let i = $index) {
+            <tr>
+              <td>{{ libro.id }}</td>
+              <td>{{ libro.codigo }}</td>
+              <td>{{ libro.titulo }}</td>
+              <td>{{ libro.autor }}</td>
+              <td>{{ libro.anio }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
 </main>
