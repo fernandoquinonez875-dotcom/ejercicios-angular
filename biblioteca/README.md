@@ -1,6 +1,6 @@
 # Biblioteca
 
-Ejercicio CRUD + login de la guía de Angular. Etapa actual: Mostrar registros.
+Ejercicio CRUD + login de la guía de Angular. Etapa actual: Crear registros.
 
 ## Ejecutar
 
@@ -24,6 +24,9 @@ Es una simulación educativa en el navegador. Utilice datos ficticios.
 App únicamente contiene RouterOutlet. LoginComponent valida el acceso.
 LibroComponent revisa la marca `sesionBiblioteca` al entrar.
 El arreglo se recupera de `librosBiblioteca` usando JSON.parse.
+Cada cambio convierte el arreglo a texto con JSON.stringify y lo guarda con localStorage.setItem.
+El ID se obtiene recorriendo los registros y sumando uno al mayor; no se permite editarlo.
+
 
 Cerrar sesión elimina únicamente `sesionBiblioteca`; conserva los registros y las claves de otras aplicaciones.
 
@@ -54,7 +57,7 @@ location.reload();
 ```
 
 El bloque solo prepara ejemplos si la clave no existe; conserva los datos existentes.
-
+El tercer registro para la captura se agrega con el formulario.
 
 ## Reglas específicas
 
@@ -67,13 +70,13 @@ Desde la raíz del repositorio común, use los mensajes exactos en este orden:
 
 1. Login biblioteca (implementado)
 2. Mostrar registros biblioteca (implementado)
-3. Crear registros biblioteca
+3. Crear registros biblioteca (implementado)
 4. Actualizar registros biblioteca
 5. Eliminar registros biblioteca
 
 ```powershell
 git add biblioteca/
-git commit -m "Mostrar registros biblioteca"
+git commit -m "Crear registros biblioteca"
 git push
 ```
 
