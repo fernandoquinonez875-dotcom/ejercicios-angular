@@ -1,6 +1,6 @@
 # Registro de estudiantes
 
-Ejercicio CRUD + login de la guía de Angular. Etapa actual: Crear registros.
+Ejercicio CRUD + login de la guía de Angular. Etapa actual: Actualizar registros.
 
 ## Ejecutar
 
@@ -26,7 +26,7 @@ EstudianteComponent revisa la marca `sesionEstudiantes` al entrar.
 El arreglo se recupera de `registrosEstudiantes` usando JSON.parse.
 Cada cambio convierte el arreglo a texto con JSON.stringify y lo guarda con localStorage.setItem.
 El ID se obtiene recorriendo los registros y sumando uno al mayor; no se permite editarlo.
-
+Editar copia valores al formulario; Actualizar modifica la fila del mismo índice conservando ID y total. Cancelar limpia el formulario sin escribir en el arreglo.
 
 Cerrar sesión elimina únicamente `sesionEstudiantes`; conserva los registros y las claves de otras aplicaciones.
 
@@ -71,12 +71,12 @@ Desde la raíz del repositorio común, use los mensajes exactos en este orden:
 1. Login estudiantes (implementado)
 2. Mostrar registros estudiantes (implementado)
 3. Crear registros estudiantes (implementado)
-4. Actualizar registros estudiantes
+4. Actualizar registros estudiantes (implementado)
 5. Eliminar registros estudiantes
 
 ```powershell
 git add estudiantes/
-git commit -m "Crear registros estudiantes"
+git commit -m "Actualizar registros estudiantes"
 git push
 ```
 
