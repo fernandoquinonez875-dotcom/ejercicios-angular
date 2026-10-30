@@ -2,5 +2,34 @@
   <h1>Agenda de tareas</h1>
   <button type="button" (click)="cerrarSesion()">Cerrar sesión</button>
 
-  <p>Sesión iniciada correctamente.</p>
+  <h2>Tareas registradas</h2>
+  <p>Total: {{ tareas.length }}</p>
+  @if (tareas.length === 0) {
+    <p>No hay tareas registradas.</p>
+  } @else {
+    <div class="tabla">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Fecha límite</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (tarea of tareas; track tarea.id; let i = $index) {
+            <tr>
+              <td>{{ tarea.id }}</td>
+              <td>{{ tarea.titulo }}</td>
+              <td>{{ tarea.descripcion }}</td>
+              <td>{{ tarea.fechaLimite }}</td>
+              <td>{{ tarea.estado }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
 </main>

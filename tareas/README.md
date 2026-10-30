@@ -1,6 +1,6 @@
 # Agenda de tareas
 
-Ejercicio CRUD + login de la guía de Angular. Etapa actual: Login.
+Ejercicio CRUD + login de la guía de Angular. Etapa actual: Mostrar registros.
 
 ## Ejecutar
 
@@ -23,13 +23,13 @@ Es una simulación educativa en el navegador. Utilice datos ficticios.
 
 App únicamente contiene RouterOutlet. LoginComponent valida el acceso.
 TareaComponent revisa la marca `sesionTareas` al entrar.
-El listado se agrega en la siguiente etapa.
+El arreglo se recupera de `agendaTareas` usando JSON.parse.
 
 Cerrar sesión elimina únicamente `sesionTareas`; conserva los registros y las claves de otras aplicaciones.
 
 ## Preparar dos registros en la fase de listado
 
-Este bloque se ejecutará en la fase Mostrar registros, antes de construir el formulario de creación:
+Después de iniciar sesión, ejecute en la consola del navegador:
 
 ```javascript
 if (localStorage.getItem('agendaTareas') === null) {
@@ -66,14 +66,14 @@ Proyecto generado con `ng new tareas --routing --ssr=false --style=css --skip-te
 Desde la raíz del repositorio común, use los mensajes exactos en este orden:
 
 1. Login tareas (implementado)
-2. Mostrar registros tareas
+2. Mostrar registros tareas (implementado)
 3. Crear registros tareas
 4. Actualizar registros tareas
 5. Eliminar registros tareas
 
 ```powershell
 git add tareas/
-git commit -m "Login tareas"
+git commit -m "Mostrar registros tareas"
 git push
 ```
 
