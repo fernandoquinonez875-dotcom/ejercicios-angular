@@ -1,6 +1,6 @@
 # Registro de mascotas
 
-Ejercicio CRUD + login de la guía de Angular. Etapa actual: Mostrar registros.
+Ejercicio CRUD + login de la guía de Angular. Etapa actual: Crear registros.
 
 ## Ejecutar
 
@@ -24,6 +24,9 @@ Es una simulación educativa en el navegador. Utilice datos ficticios.
 App únicamente contiene RouterOutlet. LoginComponent valida el acceso.
 MascotaComponent revisa la marca `sesionVeterinaria` al entrar.
 El arreglo se recupera de `mascotasVeterinaria` usando JSON.parse.
+Cada cambio convierte el arreglo a texto con JSON.stringify y lo guarda con localStorage.setItem.
+El ID se obtiene recorriendo los registros y sumando uno al mayor; no se permite editarlo.
+
 
 Cerrar sesión elimina únicamente `sesionVeterinaria`; conserva los registros y las claves de otras aplicaciones.
 
@@ -54,7 +57,7 @@ location.reload();
 ```
 
 El bloque solo prepara ejemplos si la clave no existe; conserva los datos existentes.
-
+El tercer registro para la captura se agrega con el formulario.
 
 ## Reglas específicas
 
@@ -67,13 +70,13 @@ Desde la raíz del repositorio común, use los mensajes exactos en este orden:
 
 1. Login veterinaria (implementado)
 2. Mostrar registros veterinaria (implementado)
-3. Crear registros veterinaria
+3. Crear registros veterinaria (implementado)
 4. Actualizar registros veterinaria
 5. Eliminar registros veterinaria
 
 ```powershell
 git add veterinaria/
-git commit -m "Mostrar registros veterinaria"
+git commit -m "Crear registros veterinaria"
 git push
 ```
 
