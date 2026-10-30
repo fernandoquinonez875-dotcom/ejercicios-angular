@@ -2,5 +2,34 @@
   <h1>Registro de mascotas</h1>
   <button type="button" (click)="cerrarSesion()">Cerrar sesión</button>
 
-  <p>Sesión iniciada correctamente.</p>
+  <h2>Mascotas registradas</h2>
+  <p>Total: {{ mascotas.length }}</p>
+  @if (mascotas.length === 0) {
+    <p>No hay mascotas registradas.</p>
+  } @else {
+    <div class="tabla">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Edad (años cumplidos)</th>
+            <th>Propietario</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (mascota of mascotas; track mascota.id; let i = $index) {
+            <tr>
+              <td>{{ mascota.id }}</td>
+              <td>{{ mascota.nombre }}</td>
+              <td>{{ mascota.especie }}</td>
+              <td>{{ mascota.edad }}</td>
+              <td>{{ mascota.propietario }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
 </main>
