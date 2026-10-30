@@ -96,6 +96,14 @@ export class ProductoComponent {
     this.existencias = this.productos[indice].existencias;
   }
 
+  eliminar(indice: number) {
+    if (confirm('¿Eliminar este registro?')) {
+      this.productos.splice(indice, 1);
+      this.guardarEnLocalStorage();
+      this.limpiar();
+    }
+  }
+
   limpiar() {
     this.codigo = '';
     this.nombre = '';
