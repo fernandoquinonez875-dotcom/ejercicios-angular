@@ -23,6 +23,7 @@ export class ProductoComponent {
   nombre = '';
   precio: number | null = null;
   existencias: number | null = null;
+  indiceEditar = -1;
 
   constructor(private router: Router) {
     if (localStorage.getItem('sesionTienda') !== 'si') {
@@ -60,24 +61,39 @@ export class ProductoComponent {
       return;
     }
 
-    let nuevoId = 1;
-    for (const producto of this.productos) {
-      if (producto.id >= nuevoId) {
-        nuevoId = producto.id + 1;
+    if (this.indiceEditar === -1) {
+      let nuevoId = 1;
+      for (const producto of this.productos) {
+        if (producto.id >= nuevoId) {
+          nuevoId = producto.id + 1;
+        }
       }
-    }
 
-    const nuevoRegistro: Producto = {
-      id: nuevoId,
-      codigo: this.codigo.trim(),
-      nombre: this.nombre.trim(),
-      precio: this.precio,
-      existencias: this.existencias
-    };
-    this.productos.push(nuevoRegistro);
+      const nuevoRegistro: Producto = {
+        id: nuevoId,
+        codigo: this.codigo.trim(),
+        nombre: this.nombre.trim(),
+        precio: this.precio,
+        existencias: this.existencias
+      };
+      this.productos.push(nuevoRegistro);
+    } else {
+      this.productos[this.indiceEditar].codigo = this.codigo.trim();
+      this.productos[this.indiceEditar].nombre = this.nombre.trim();
+      this.productos[this.indiceEditar].precio = this.precio;
+      this.productos[this.indiceEditar].existencias = this.existencias;
+    }
 
     this.guardarEnLocalStorage();
     this.limpiar();
+  }
+
+  editar(indice: number) {
+    this.indiceEditar = indice;
+    this.codigo = this.productos[indice].codigo;
+    this.nombre = this.productos[indice].nombre;
+    this.precio = this.productos[indice].precio;
+    this.existencias = this.productos[indice].existencias;
   }
 
   limpiar() {
@@ -85,6 +101,7 @@ export class ProductoComponent {
     this.nombre = '';
     this.precio = null;
     this.existencias = null;
+    this.indiceEditar = -1;
   }
 
   guardarEnLocalStorage() {
