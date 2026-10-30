@@ -91,6 +91,14 @@ export class TareaComponent {
     this.estado = this.tareas[indice].estado;
   }
 
+  eliminar(indice: number) {
+    if (confirm('¿Eliminar este registro?')) {
+      this.tareas.splice(indice, 1);
+      this.guardarEnLocalStorage();
+      this.limpiar();
+    }
+  }
+
   limpiar() {
     this.titulo = '';
     this.descripcion = '';
