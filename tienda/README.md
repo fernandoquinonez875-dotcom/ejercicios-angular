@@ -1,6 +1,6 @@
 # Inventario de una tienda
 
-Ejercicio CRUD + login de la guía de Angular. Etapa actual: Login.
+Ejercicio CRUD + login de la guía de Angular. Etapa actual: Mostrar registros.
 
 ## Ejecutar
 
@@ -23,13 +23,13 @@ Es una simulación educativa en el navegador. Utilice datos ficticios.
 
 App únicamente contiene RouterOutlet. LoginComponent valida el acceso.
 ProductoComponent revisa la marca `sesionTienda` al entrar.
-El listado se agrega en la siguiente etapa.
+El arreglo se recupera de `productosTienda` usando JSON.parse.
 
 Cerrar sesión elimina únicamente `sesionTienda`; conserva los registros y las claves de otras aplicaciones.
 
 ## Preparar dos registros en la fase de listado
 
-Este bloque se ejecutará en la fase Mostrar registros, antes de construir el formulario de creación:
+Después de iniciar sesión, ejecute en la consola del navegador:
 
 ```javascript
 if (localStorage.getItem('productosTienda') === null) {
@@ -66,14 +66,14 @@ Proyecto generado con `ng new tienda --routing --ssr=false --style=css --skip-te
 Desde la raíz del repositorio común, use los mensajes exactos en este orden:
 
 1. Login tienda (implementado)
-2. Mostrar registros tienda
+2. Mostrar registros tienda (implementado)
 3. Crear registros tienda
 4. Actualizar registros tienda
 5. Eliminar registros tienda
 
 ```powershell
 git add tienda/
-git commit -m "Login tienda"
+git commit -m "Mostrar registros tienda"
 git push
 ```
 
