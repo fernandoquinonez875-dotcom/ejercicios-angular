@@ -1,6 +1,6 @@
 # Biblioteca
 
-Ejercicio CRUD + login de la guía de Angular. Etapa actual: Crear registros.
+Ejercicio CRUD + login de la guía de Angular. Etapa actual: Actualizar registros.
 
 ## Ejecutar
 
@@ -26,7 +26,7 @@ LibroComponent revisa la marca `sesionBiblioteca` al entrar.
 El arreglo se recupera de `librosBiblioteca` usando JSON.parse.
 Cada cambio convierte el arreglo a texto con JSON.stringify y lo guarda con localStorage.setItem.
 El ID se obtiene recorriendo los registros y sumando uno al mayor; no se permite editarlo.
-
+Editar copia valores al formulario; Actualizar modifica la fila del mismo índice conservando ID y total. Cancelar limpia el formulario sin escribir en el arreglo.
 
 Cerrar sesión elimina únicamente `sesionBiblioteca`; conserva los registros y las claves de otras aplicaciones.
 
@@ -71,12 +71,12 @@ Desde la raíz del repositorio común, use los mensajes exactos en este orden:
 1. Login biblioteca (implementado)
 2. Mostrar registros biblioteca (implementado)
 3. Crear registros biblioteca (implementado)
-4. Actualizar registros biblioteca
+4. Actualizar registros biblioteca (implementado)
 5. Eliminar registros biblioteca
 
 ```powershell
 git add biblioteca/
-git commit -m "Crear registros biblioteca"
+git commit -m "Actualizar registros biblioteca"
 git push
 ```
 
