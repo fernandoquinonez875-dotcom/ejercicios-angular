@@ -1,6 +1,6 @@
 # Registro de estudiantes
 
-Ejercicio CRUD + login de la guía de Angular. Etapa actual: Login.
+Ejercicio CRUD + login de la guía de Angular. Etapa actual: Mostrar registros.
 
 ## Ejecutar
 
@@ -23,13 +23,13 @@ Es una simulación educativa en el navegador. Utilice datos ficticios.
 
 App únicamente contiene RouterOutlet. LoginComponent valida el acceso.
 EstudianteComponent revisa la marca `sesionEstudiantes` al entrar.
-El listado se agrega en la siguiente etapa.
+El arreglo se recupera de `registrosEstudiantes` usando JSON.parse.
 
 Cerrar sesión elimina únicamente `sesionEstudiantes`; conserva los registros y las claves de otras aplicaciones.
 
 ## Preparar dos registros en la fase de listado
 
-Este bloque se ejecutará en la fase Mostrar registros, antes de construir el formulario de creación:
+Después de iniciar sesión, ejecute en la consola del navegador:
 
 ```javascript
 if (localStorage.getItem('registrosEstudiantes') === null) {
@@ -66,14 +66,14 @@ Proyecto generado con `ng new estudiantes --routing --ssr=false --style=css --sk
 Desde la raíz del repositorio común, use los mensajes exactos en este orden:
 
 1. Login estudiantes (implementado)
-2. Mostrar registros estudiantes
+2. Mostrar registros estudiantes (implementado)
 3. Crear registros estudiantes
 4. Actualizar registros estudiantes
 5. Eliminar registros estudiantes
 
 ```powershell
 git add estudiantes/
-git commit -m "Login estudiantes"
+git commit -m "Mostrar registros estudiantes"
 git push
 ```
 
