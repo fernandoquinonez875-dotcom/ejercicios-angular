@@ -91,6 +91,14 @@ export class MascotaComponent {
     this.propietario = this.mascotas[indice].propietario;
   }
 
+  eliminar(indice: number) {
+    if (confirm('¿Eliminar este registro?')) {
+      this.mascotas.splice(indice, 1);
+      this.guardarEnLocalStorage();
+      this.limpiar();
+    }
+  }
+
   limpiar() {
     this.nombre = '';
     this.especie = '';
