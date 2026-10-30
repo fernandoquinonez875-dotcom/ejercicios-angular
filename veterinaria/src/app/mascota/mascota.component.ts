@@ -23,6 +23,7 @@ export class MascotaComponent {
   especie = '';
   edad: number | null = null;
   propietario = '';
+  indiceEditar = -1;
 
   constructor(private router: Router) {
     if (localStorage.getItem('sesionVeterinaria') !== 'si') {
@@ -55,24 +56,39 @@ export class MascotaComponent {
       return;
     }
 
-    let nuevoId = 1;
-    for (const mascota of this.mascotas) {
-      if (mascota.id >= nuevoId) {
-        nuevoId = mascota.id + 1;
+    if (this.indiceEditar === -1) {
+      let nuevoId = 1;
+      for (const mascota of this.mascotas) {
+        if (mascota.id >= nuevoId) {
+          nuevoId = mascota.id + 1;
+        }
       }
-    }
 
-    const nuevoRegistro: Mascota = {
-      id: nuevoId,
-      nombre: this.nombre.trim(),
-      especie: this.especie.trim(),
-      edad: this.edad,
-      propietario: this.propietario.trim()
-    };
-    this.mascotas.push(nuevoRegistro);
+      const nuevoRegistro: Mascota = {
+        id: nuevoId,
+        nombre: this.nombre.trim(),
+        especie: this.especie.trim(),
+        edad: this.edad,
+        propietario: this.propietario.trim()
+      };
+      this.mascotas.push(nuevoRegistro);
+    } else {
+      this.mascotas[this.indiceEditar].nombre = this.nombre.trim();
+      this.mascotas[this.indiceEditar].especie = this.especie.trim();
+      this.mascotas[this.indiceEditar].edad = this.edad;
+      this.mascotas[this.indiceEditar].propietario = this.propietario.trim();
+    }
 
     this.guardarEnLocalStorage();
     this.limpiar();
+  }
+
+  editar(indice: number) {
+    this.indiceEditar = indice;
+    this.nombre = this.mascotas[indice].nombre;
+    this.especie = this.mascotas[indice].especie;
+    this.edad = this.mascotas[indice].edad;
+    this.propietario = this.mascotas[indice].propietario;
   }
 
   limpiar() {
@@ -80,6 +96,7 @@ export class MascotaComponent {
     this.especie = '';
     this.edad = null;
     this.propietario = '';
+    this.indiceEditar = -1;
   }
 
   guardarEnLocalStorage() {
